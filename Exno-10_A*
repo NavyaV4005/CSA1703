@@ -1,0 +1,51 @@
+print("192372022-V Navya")
+import heapq
+
+def a_star(graph, heuristics, start, goal):
+    open_set = []
+    heapq.heappush(open_set, (0 + heuristics[start], 0, start, [start]))
+    visited = set()
+
+    while open_set:
+        f, g, current, path = heapq.heappop(open_set)
+
+        if current == goal:
+            return path
+
+        if current in visited:
+            continue
+        visited.add(current)
+
+        for neighbor, cost in graph[current].items():
+            if neighbor not in visited:
+                total_cost = g + cost
+                heapq.heappush(open_set, (total_cost + heuristics[neighbor], total_cost, neighbor, path + [neighbor]))
+
+    return None  
+graph = {
+    'A': {'B': 1, 'C': 4},
+    'B': {'D': 2, 'E': 5},
+    'C': {'F': 3},
+    'D': {'G': 1},
+    'E': {'G': 2},
+    'F': {'G': 2},
+    'G': {}
+}
+heuristics = {
+    'A': 7,
+    'B': 6,
+    'C': 5,
+    'D': 4,
+    'E': 2,
+    'F': 3,
+    'G': 0
+}
+
+start = 'A'
+goal = 'G'
+path = a_star(graph, heuristics, start, goal)
+
+if path:
+    print("Path found:", " -> ".join(path))
+else:
+    print("No path found.")

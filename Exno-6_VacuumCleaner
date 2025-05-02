@@ -1,0 +1,25 @@
+print("192372022-V Navya")
+def vacuum_cleaner(location, state):
+    actions = []
+    # state: dictionary with room status
+    while state['A'] == 'Dirty' or state['B'] == 'Dirty':
+        if state[location] == 'Dirty':
+            actions.append(f"Suck at {location}")
+            state[location] = 'Clean'
+        else:
+            if location == 'A':
+                actions.append("Move to B")
+                location = 'B'
+            else:
+                actions.append("Move to A")
+                location = 'A'
+    actions.append("Done: All rooms clean.")
+    return actions
+
+# Example usage:
+if __name__ == "__main__":
+    initial_location = 'A'
+    initial_state = {'A': 'Dirty', 'B': 'Dirty'}
+    steps = vacuum_cleaner(initial_location, initial_state.copy())
+    for step in steps:
+        print(step)

@@ -1,0 +1,37 @@
+% Facts: Symptoms for various diseases
+has_symptom(john, fever).
+has_symptom(john, cough).
+has_symptom(john, sore_throat).
+has_symptom(mary, fever).
+has_symptom(mary, headache).
+has_symptom(mary, body_aches).
+has_symptom(jane, rash).
+has_symptom(jane, fever).
+has_symptom(jane, headache).
+has_symptom(bob, cough).
+has_symptom(bob, sore_throat).
+
+% Rules for Diagnosis
+disease(flu) :-
+    has_symptom(_, fever),
+    has_symptom(_, cough),
+    has_symptom(_, sore_throat).
+
+disease(cold) :-
+    has_symptom(_, cough),
+    has_symptom(_, sore_throat),
+    \+ has_symptom(_, fever).
+
+disease(chicken_pox) :-
+    has_symptom(_, rash),
+    has_symptom(_, fever).
+
+disease(malaria) :-
+    has_symptom(_, fever),
+    has_symptom(_, body_aches),
+    has_symptom(_, headache).
+
+% Rule for diagnosing a person based on their symptoms
+diagnose(Person, Disease) :-
+    disease(Disease),
+    has_symptom(Person, _).

@@ -1,0 +1,19 @@
+% Define edges with costs
+edge(a, b, 4).
+edge(a, c, 3).
+edge(b, d, 5).
+edge(b, e, 2).
+edge(c, f, 6).
+edge(c, g, 7).
+
+% Best First Search
+best_first_search(Start, Goal, Path) :-
+    best_first_search_recursive([node(Start, [])], Goal, Path).
+
+best_first_search_recursive([node(Goal, Path) | _], Goal, Path).
+best_first_search_recursive([node(Current, Path) | Rest], Goal, Result) :-
+    findall(node(Next, [Next | Path]),
+            edge(Current, Next, _), NextNodes),
+    append(Rest, NextNodes, Queue),
+    sort(2, @=<, Queue, SortedQueue),  % Sort based on path length or cost
+    best_first_search_recursive(SortedQueue, Goal, Result).

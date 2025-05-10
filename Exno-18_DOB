@@ -1,0 +1,6 @@
+% Facts: name_dob(Name, DOB).
+name_dob('Alice', '1995-01-15').
+name_dob('Bob', '1990-06-23').
+name_dob('Charlie', '2000-12-05').
+name_dob('Diana', '1988-07-30').
+name_dob('Ethan', '1993-11-11').

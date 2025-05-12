@@ -1,0 +1,10 @@
+starts_with([], _).
+starts_with([H1|T1], [H1|T2]) :-
+    starts_with(T1, T2).
+
+match_pattern(Pattern, List) :-
+    same_length(Pattern, _),       
+    starts_with(Pattern, List).    
+
+match_pattern(Pattern, [_|T]) :-
+    match_pattern(Pattern, T).

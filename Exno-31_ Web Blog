@@ -1,0 +1,31 @@
+<h1>HTML Tags Demo</h1>
+
+<h2>1. Anchor Tag Example</h2>
+<p>
+  Here’s an example of an anchor tag that links to an external website:
+  <a href="https://www.wikipedia.org" target="_blank" title="Visit Wikipedia">Visit Wikipedia</a>
+</p>
+
+<h2>2. Internal Anchor Example</h2>
+<p>
+  You can use anchor tags to jump to different sections within the same page:
+  <a href="#about">Go to About Section</a>
+</p>
+
+<h2>3. Email Link Example</h2>
+<p>
+  You can also use an anchor tag to open the email client:
+  <a href="mailto:someone@example.com?subject=Hello%20from%20My%20Blog">Send me an Email</a>
+</p>
+
+<h2>4. File Download Link Example</h2>
+<p>
+  Here’s an example of a download link:
+  <a href="https://yourwebsite.com/wp-content/uploads/sample.pdf" download>Download My Sample PDF</a>
+</p>
+
+<!-- This is where the internal link takes you -->
+<h2 id="about">About Section</h2>
+<p>
+  Welcome to the About section! You've arrived here by clicking on an internal anchor tag. This is useful for linking within long pages.
+</p>
